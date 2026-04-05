@@ -1,0 +1,7 @@
+publication/*.aux
+publication/*.fdb_latexmk
+publication/*.fls
+publication/*.log
+publication/*.out
+publication/*.synctex.gz
+publication/*.toc
