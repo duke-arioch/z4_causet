@@ -10,6 +10,8 @@
 \usepackage{cleveref}
 \usepackage{geometry}
 \usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning}
 
 \geometry{margin=1.15in}
 
@@ -56,7 +58,7 @@ A companion paper (\emph{What Must Exist}) argues that any minimally expressive 
 
 This paper takes $\Zf$ as given and develops the mathematical structures that arise when $\Zf$ is used to label directed relations constrained by local algebraic consistency.  The central objects are relational $\Zf$ causets: finite directed graphs with $\Zf$ phase labels on edges and a conservation law at nodes.  We establish the basic definitions, identify the two-layer architecture, prove several structural results, and apply them to the question of initial conditions.
 
-We proceed as follows.  Section~\ref{sec:Z4} fixes notation for~$\Zf$.  Section~\ref{sec:causets} defines relational $\Zf$ causets.  Section~\ref{sec:holonomy} introduces holonomy and frustration.  Section~\ref{sec:conservation} derives the conservation law.  Section~\ref{sec:layers} identifies the two-layer architecture and the spacetime split.  Section~\ref{sec:dynamics} states the postulates and describes the dynamics.  Sections~\ref{sec:bootstrap}--\ref{sec:nevertarget} ask what comes first.  Section~\ref{sec:open} surveys open questions.
+We proceed as follows.  Section~\ref{sec:Z4} fixes notation for~$\Zf$.  Section~\ref{sec:causets} defines relational $\Zf$ causets.  Section~\ref{sec:holonomy} introduces holonomy and frustration.  Section~\ref{sec:conservation} derives the conservation law.  Section~\ref{sec:layers} identifies the two-layer architecture and its structural split.  Section~\ref{sec:dynamics} states the postulates and describes the dynamics.  Sections~\ref{sec:bootstrap}--\ref{sec:nevertarget} ask what comes first.  Section~\ref{sec:open} surveys open questions.
 
 % ===================================================================
 \section{The group $\Zf$}\label{sec:Z4}
@@ -140,7 +142,7 @@ The partial order is over events, not nodes.  A directed cycle in the graph is a
 \section{Holonomy and frustration}\label{sec:holonomy}
 
 \begin{definition}[Face]\label{def:face}
-A \emph{face} of $G$ is a directed cycle $C = (v_0, v_1, \ldots, v_{k-1}, v_0)$ with $k \geq 3$ distinct vertices that is \emph{induced}: no edge in $E$ connects two non-adjacent vertices of~$C$.
+A \emph{face} of $G$ is a directed cycle $C = (v_0, v_1, \ldots, v_{k-1}, v_0)$ with $k \geq 3$ distinct vertices that is \emph{induced}: no edge in $E$ connects two non-adjacent vertices of~$C$.  Faces are considered up to cyclic permutation of vertices.
 \end{definition}
 
 \begin{definition}[Holonomy]\label{def:hol}
@@ -189,9 +191,21 @@ The \emph{charge} at a node is
 Conservation holds at $v$ iff $q(v) = 1$.
 \end{definition}
 
-\begin{remark}\label{rmk:consunique}
-The conservation law is not an additional postulate but the minimal local balance condition compatible with the ontology.  If edges are fundamental and nodes are derived, the phases incident at a node must compose through the group operation for the node to be algebraically meaningful.  Equation~\eqref{eq:cons} is the unique such condition, for three reasons.  First, \emph{locality}: the law references only edges incident to~$v$, not distant structure.  Second, \emph{group compatibility}: the relation is expressed purely in terms of the $\Zf$ multiplication, with no external parameters.  Third, \emph{symmetry}: any relation of the form $\prod_{\inp} \phi = g \cdot \prod_{\out} \phi$ for a fixed $g \neq 1$ would distinguish nodes without justification---there is no canonical non-identity element to serve as~$g$.  Any alternative to equality either introduces non-local dependence, breaks symmetry between nodes, or requires selection of a distinguished non-identity element, which is not available in~$\Zf$ without additional structure.  Equality is the unique surviving option.  At the philosophical level, this condition corresponds to the requirement of local non-contradiction developed in the companion paper; here it appears in its simplest algebraic form.
-\end{remark}
+\begin{proposition}[Uniqueness of the conservation law]\label{prop:consunique}
+Let $R$ be a local balance condition at a node~$v$ in a relational $\Zf$ causet, satisfying:
+\begin{enumerate}[nosep,label=(\roman*)]
+    \item \emph{Locality}: $R$ depends only on edges incident to~$v$.
+    \item \emph{Group compatibility}: $R$ is expressible in terms of the $\Zf$ multiplication, with no external parameters.
+    \item \emph{Node symmetry}: $R$ does not distinguish between nodes---it takes the same form at every~$v$.
+\end{enumerate}
+Then, under the assumption that no element of $\Zf$ is distinguished independently of the relational structure, $R$ is equivalent to $\prod_{\inp} \phi(e) = \prod_{\out} \phi(e)$.
+\end{proposition}
+
+\begin{proof}
+By (i) and (ii), $R$ relates the incoming and outgoing phase products through the group operation.  The most general such relation is $\prod_{\inp} \phi = g \cdot \prod_{\out} \phi$ for some fixed $g \in \Zf$.  By (iii), $g$ must be the same at every node.  But $\Zf$ has no canonical non-identity element: there is no distinguished choice of $g \neq 1$ available without additional structure.  Any $g \neq 1$ would impose an asymmetry between nodes that is not grounded in the ontology.  Therefore $g = 1$, giving~\eqref{eq:cons}.
+
+At the philosophical level, this condition corresponds to the requirement of local non-contradiction developed in the companion paper; here it appears in its simplest algebraic form.
+\end{proof}
 
 \begin{proposition}[Global charge conservation]\label{prop:globalcharge}
 $\prod_{v \in V} q(v) = 1$.
@@ -227,6 +241,108 @@ For Layer~2: frustration is direction-insensitive (\cref{prop:undirected}).  Cha
 \end{remark}
 
 % ===================================================================
+\section{Worked examples}\label{sec:example}
+
+We illustrate the two-layer architecture with two small causets.
+
+\begin{example}[Frustrated triangle]\label{ex:triangle}
+Consider the relational $\Zf$ causet with three nodes $\{a, b, c\}$ and three edges, all carrying phase~$i$.
+
+\medskip
+\noindent\textbf{Layer 1} (directed graph with $\Zf$ labels):
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=2.4cm,
+    vertex/.style={circle, draw, minimum size=8mm, inner sep=0pt, font=\small},
+    edge label/.style={font=\small, fill=white, inner sep=1.5pt},
+    >={Stealth[length=5pt]}
+]
+    \node[vertex] (a) {$a$};
+    \node[vertex, right=of a] (b) {$b$};
+    \node[vertex, below right=1.5cm and 1.2cm of a] (c) {$c$};
+
+    \draw[->, thick] (a) -- node[edge label, above] {$i$} (b);
+    \draw[->, thick] (b) -- node[edge label, right] {$i$} (c);
+    \draw[->, thick] (c) -- node[edge label, left] {$i$} (a);
+\end{tikzpicture}
+\end{center}
+
+Three directed edges, each with phase~$i$.  The direction matters: $a \to b$ means $b$ is derived from~$a$.  Reversing any edge would conjugate its phase ($i \mapsto -i$).
+
+\medskip
+\noindent\textbf{Layer 2} (derived holonomy landscape):
+
+The graph contains one face: the induced 3-cycle $(a, b, c, a)$.
+
+\emph{Holonomy.}  Traversing in the directed sense:
+\[
+\Hol(a \to b \to c \to a) = i \cdot i \cdot i = i^3 = -i.
+\]
+Traversing in the reverse sense gives $\Hol = (-i)^{-1} = i$.  The two values are conjugate (inverses in $\Zf$).
+
+\emph{Frustration.}  $\Frust = d(-i, 1) = 1$.  Equivalently, $d(i, 1) = 1$: the same value regardless of traversal direction.  \textbf{Frustration is undirected}---it is a property of the cycle as an unoriented loop, not of its traversal.
+
+\emph{Charge.}  At each node, one edge arrives and one departs, both carrying~$i$:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Node & $\prod \phi_{\inp}$ & $\prod \phi_{\out}$ & $q(v)$ \\
+\midrule
+$a$ & $i$ & $i$ & $1$ \\
+$b$ & $i$ & $i$ & $1$ \\
+$c$ & $i$ & $i$ & $1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+All charges vanish.  The graph is conservation-consistent.
+
+\medskip
+\noindent\textbf{The structural split in action.}  Layer~1 carries directed information (the arrows, the distinction between $a \to b$ and $b \to a$).  Layer~2 carries undirected information (frustration~$= 1$, charges~$= 1$ at every node).  This concretely illustrates \cref{thm:split}: although the underlying graph is directed, the derived frustration is insensitive to orientation.
+\end{example}
+
+\begin{remark}
+An analogous triangle with $\phi = -1$ (opposition) yields holonomy $(-1)^3 = -1$ and frustration~$2$, illustrating the distinction between otherness and opposition modes.  The difference in frustration---$1$ for otherness, $2$ for opposition---reappears in the bootstrap analysis (\cref{sec:nevertarget}).
+\end{remark}
+
+\begin{example}[Charged pair: Layer~1 without Layer~2]\label{ex:charged}
+The minimal graph: a single edge $a \to b$ with phase~$i$.
+
+\begin{center}
+\begin{tikzpicture}[
+    node distance=2.8cm,
+    vertex/.style={circle, draw, minimum size=8mm, inner sep=0pt, font=\small},
+    edge label/.style={font=\small, fill=white, inner sep=1.5pt},
+    >={Stealth[length=5pt]}
+]
+    \node[vertex] (a) {$a$};
+    \node[vertex, right=of a] (b) {$b$};
+
+    \draw[->, thick] (a) -- node[edge label, above] {$i$} (b);
+\end{tikzpicture}
+\end{center}
+
+\noindent\textbf{Layer 1:}  One directed edge.  $b$ is derived from~$a$.
+
+\noindent\textbf{Layer 2:}  No faces exist ($k \geq 3$ required), so there is no holonomy and hence no frustration; the constraint layer has not yet come into existence.  This graph has Layer~1 content but no Layer~2 content: directed structure without constraint structure.
+
+\emph{Charge.}  Conservation fails at both nodes:
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+Node & $\prod \phi_{\inp}$ & $\prod \phi_{\out}$ & $q(v)$ \\
+\midrule
+$a$ & $1$ (empty) & $i$ & $-i$ \\
+$b$ & $i$ & $1$ (empty) & $i$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The charges are conjugate: $q(a) \cdot q(b) = (-i)(i) = 1$ (\cref{prop:globalcharge}).
+
+This is the initial state of the growth sequence: a charged pair with directed structure but no constraint structure.  The frustrated triangle of \cref{ex:triangle} is what it grows into---acquiring Layer~2 content when the first face closes.
+\end{example}
+
+% ===================================================================
 \section{Dynamics}\label{sec:dynamics}
 
 The theory rests on three postulates:
@@ -236,7 +352,7 @@ The theory rests on three postulates:
     \item Algebraic consistency: the conservation law~\eqref{eq:cons} holds; new edges must be consistent with existing local phase structure.
 \end{enumerate}
 
-The dynamics creates structure through two moves: \emph{sprouting} (extending an edge to a new node) and \emph{bridging} (connecting two existing nodes, creating faces).  We adopt the dynamical hypothesis that frustration drives growth: regions of high frustration create pressure for new edges that redistribute it, and bridging is preferred over sprouting because it immediately creates faces, enabling constraint propagation.  This hypothesis is not proved here; it is motivated by the crystallisation dynamics developed in the companion physics paper and is assumed in the dynamical arguments (but not the theorems) that follow.
+The dynamics creates structure through two moves: \emph{sprouting} (extending an edge to a new node) and \emph{bridging} (connecting two existing nodes, creating faces).  We adopt the dynamical hypothesis that frustration drives growth: regions of high frustration create pressure for new edges that redistribute it, and bridging is preferred over sprouting because it immediately creates faces, enabling constraint propagation.  We adopt this as the minimal dynamics coupling Layer~2 structure back to Layer~1 growth: frustration is the only scalar quantity derived from holonomy that is available at Layer~2 without additional assumptions.  This hypothesis is not proved here; it is motivated by the crystallisation dynamics developed in the companion physics paper and is assumed in the dynamical arguments (but not the theorems) that follow.
 
 % ===================================================================
 \section{Back to the beginning}\label{sec:bootstrap}
@@ -317,7 +433,7 @@ Fewer than three edges cannot form a face.  Three edges $a \to b$, $b \to c$, $c
 \end{proof}
 
 \begin{remark}
-The void-return resolves all charges and does not distinguish Dirac-type ($\phi = \pm i$, holonomy $\mp i$, frustration~$1$) from Majorana-type ($\phi = -1$, holonomy~$-1$, frustration~$2$).  (We use ``Dirac-type'' and ``Majorana-type'' as structural labels only, reflecting the conjugate-pair vs.\ self-conjugate distinction in~$\Zf$.  No claim is made about correspondence to fermion physics.)
+The void-return resolves all charges and does not distinguish Dirac-type ($\phi = \pm i$, holonomy $\mp i$, frustration~$1$) from Majorana-type ($\phi = -1$, holonomy~$-1$, frustration~$2$).  (We use ``Dirac-type'' and ``Majorana-type'' as structural labels chosen by analogy only, reflecting the conjugate-pair vs.\ self-conjugate distinction in~$\Zf$.  No claim is made about correspondence to fermion physics.)
 \end{remark}
 
 % ===================================================================
@@ -407,6 +523,9 @@ Both participatory and absolute voids are compatible with the postulates.  Wheth
 
 \paragraph{Economy as dynamics.}
 The Dirac-type seed reaches frustration in fewer edges, but we have shown economy as a structural distinction, not a dynamical law.  Whether the crystallisation dynamics preferentially follows the shortest path to frustration is a question for simulation.
+
+\paragraph{Frustration as the dynamical scalar.}
+We have adopted frustration as the quantity mediating between Layer~2 constraints and Layer~1 growth.  Whether frustration is the unique scalar capable of playing this role---or whether other Layer~2 quantities (e.g.\ charge density, face count) could serve as alternative or complementary drivers---remains open.
 
 \paragraph{Continuum limit.}
 Whether the frustration of faces approximates the Einstein--Hilbert action in an appropriate limit is the bridge to general relativity.
