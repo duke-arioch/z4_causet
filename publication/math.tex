@@ -45,7 +45,7 @@
 \maketitle
 
 \begin{abstract}
-A companion paper argues that the cyclic group $\Zf$ is the minimal algebra (within stated constraints) carrying the relational concepts of identity, opposition, and irreducible otherness.  Here we develop the mathematical framework that follows: relational $\Zf$ causets (directed graphs with $\Zf$ phase labels), a node conservation law entailed by algebraic consistency, and a two-layer architecture in which the directed graph provides causal structure while the derived holonomy landscape provides constraint structure.  We prove that a structural split is inherent in the algebra: Layer~2 observables are direction-insensitive.  We analyse initial conditions under two interpretations of the origin---the \emph{participatory void} and the \emph{absolute void}---and show that under the more austere interpretation, the otherness modes ($\phi = \pm i$) reach self-propagating dynamics in fewer steps than the opposition mode ($\phi = -1$).
+  A companion paper argues that the cyclic group $\Zf$ is the minimal algebra (within stated constraints) carrying the relational concepts of identity, opposition, and irreducible otherness.  Here we develop the mathematical framework that follows: relational $\Zf$ causets (directed graphs with $\Zf$ phase labels), a node conservation law entailed by algebraic consistency, and a two-layer architecture in which the directed graph provides causal structure while the derived holonomy landscape provides constraint structure.  We prove that a structural split is inherent in the algebra: Layer~2 observables are direction-insensitive.  We analyse initial conditions under two interpretations of the origin---the \emph{participatory void} and the \emph{absolute void}---and show that under the more austere interpretation, the otherness modes ($\phi = \pm i$) reach self-propagating dynamics in fewer steps than the opposition mode ($\phi = -1$).
 \end{abstract}
 
 \tableofcontents
@@ -64,65 +64,67 @@ We proceed as follows.  Section~\ref{sec:Z4} fixes notation for~$\Zf$.  Section~
 \section{The group $\Zf$}\label{sec:Z4}
 
 \begin{definition}\label{def:Z4}
-$\Zf = \{1, i, -1, -i\}$ is the cyclic group of order four under multiplication, realised as the fourth roots of unity.  The identity is~$1$.  The unique element of order~$2$ is~$-1$.  The elements $i$ and $-i$ have order~$4$ and are mutual inverses: $i \cdot (-i) = 1$.
+  $\Zf = \{1, i, -1, -i\}$ is the cyclic group of order four under multiplication, realised as the fourth roots of unity.  The identity is~$1$.  The unique element of order~$2$ is~$-1$.  The elements $i$ and $-i$ have order~$4$ and are mutual inverses: $i \cdot (-i) = 1$.
 \end{definition}
 
 The multiplication table is:
 \begin{center}
-\begin{tabular}{c|cccc}
-$\cdot$ & $1$ & $i$ & $-1$ & $-i$ \\
-\hline
-$1$  & $1$ & $i$ & $-1$ & $-i$ \\
-$i$  & $i$ & $-1$ & $-i$ & $1$ \\
-$-1$ & $-1$ & $-i$ & $1$ & $i$ \\
-$-i$ & $-i$ & $1$ & $i$ & $-1$ \\
-\end{tabular}
+  \begin{tabular}{c|cccc}
+    $\cdot$ & $1$ & $i$ & $-1$ & $-i$ \\
+    \hline
+    $1$  & $1$ & $i$ & $-1$ & $-i$ \\
+    $i$  & $i$ & $-1$ & $-i$ & $1$ \\
+    $-1$ & $-1$ & $-i$ & $1$ & $i$ \\
+    $-i$ & $-i$ & $1$ & $i$ & $-1$ \\
+  \end{tabular}
 \end{center}
 
 \begin{definition}[Cayley metric]\label{def:cayley}
-The \emph{Cayley graph distance} on $\Zf$ is
-\begin{equation}\label{eq:cayley}
-    d(h, 1) = \begin{cases} 0 & h = 1 \\ 1 & h = \pm i \\ 2 & h = -1 \end{cases}
-\end{equation}
-the minimum number of generator steps from $h$ to the identity.
+  The \emph{Cayley graph distance} on $\Zf$ is
+  \begin{equation}\label{eq:cayley}
+    d(h, 1) =
+    \begin{cases} 0 & h = 1 \\ 1 & h = \pm i \\ 2 & h = -1
+    \end{cases}
+  \end{equation}
+  the minimum number of generator steps from $h$ to the identity.
 \end{definition}
 
 \begin{proposition}\label{prop:symm}
-$d(h, 1) = d(h^{-1}, 1)$ for all $h \in \Zf$.
+  $d(h, 1) = d(h^{-1}, 1)$ for all $h \in \Zf$.
 \end{proposition}
 
 \begin{proof}
-The cases $h = 1$ and $h = -1$ are immediate ($-1$ is self-inverse).  For $h = i$: $i^{-1} = -i$ and $d(i, 1) = d(-i, 1) = 1$.
+  The cases $h = 1$ and $h = -1$ are immediate ($-1$ is self-inverse).  For $h = i$: $i^{-1} = -i$ and $d(i, 1) = d(-i, 1) = 1$.
 \end{proof}
 
 \begin{remark}
-Following the companion paper: $1$ represents \emph{identity}, $-1$ represents \emph{opposition} (self-inverse), and $i, -i$ represent \emph{otherness} and its conjugate (not self-inverse; $i^{-1} = -i \neq i$).  The structural distinction between self-inverse and non-self-inverse elements will have algebraic consequences in what follows.
+  Following the companion paper: $1$ represents \emph{identity}, $-1$ represents \emph{opposition} (self-inverse), and $i, -i$ represent \emph{otherness} and its conjugate (not self-inverse; $i^{-1} = -i \neq i$).  The structural distinction between self-inverse and non-self-inverse elements will have algebraic consequences in what follows.
 \end{remark}
 
 % ===================================================================
 \section{Relational $\Zf$ causets}\label{sec:causets}
 
 \begin{definition}\label{def:causet}
-A \emph{relational $\Zf$ causet} is a triple $G = (V, E, \phi)$ where $V$ is a finite set of nodes, $E \subseteq V \times V$ is a set of directed edges (with $u \to v$ denoting $(u,v) \in E$), and $\phi: E \to \Zf$ assigns a phase label to each edge.
+  A \emph{relational $\Zf$ causet} is a triple $G = (V, E, \phi)$ where $V$ is a finite set of nodes, $E \subseteq V \times V$ is a set of directed edges (with $u \to v$ denoting $(u,v) \in E$), and $\phi: E \to \Zf$ assigns a phase label to each edge.
 \end{definition}
 
 \begin{definition}\label{def:incidence}
-For $v \in V$: $\inp(v) = \{e \in E : e = (u, v)\}$ is the set of incoming edges; $\out(v) = \{e \in E : e = (v, w)\}$ the set of outgoing edges.
+  For $v \in V$: $\inp(v) = \{e \in E : e = (u, v)\}$ is the set of incoming edges; $\out(v) = \{e \in E : e = (v, w)\}$ the set of outgoing edges.
 \end{definition}
 
 The edge $u \to v$ means \emph{$v$ is derived from~$u$}: the arrow points from ground to product.  Direction reversal maps $\phi(u \to v) \mapsto \phi(u \to v)^{-1}$.
 
 \begin{remark}[Nodes are derived]\label{rmk:derived}
-$V$ is not ontologically fundamental.  A node is the equivalence class of edge-endpoints identified by local relational context.  Two nodes with identical edge-bundles are indiscernible.  An isolated node has no operational meaning.
+  $V$ is not ontologically fundamental.  A node is the equivalence class of edge-endpoints identified by local relational context.  Two nodes with identical edge-bundles are indiscernible.  An isolated node has no operational meaning.
 \end{remark}
 
 \subsection{Ontological commitments}\label{sec:ontcommit}
 
 We are explicit about the ontological hierarchy:
 \begin{enumerate}[nosep]
-    \item \emph{Events} (edge-creations) are fundamental: the primitive acts of the theory.
-    \item \emph{Edges} are the relations established by events.  Each edge is directed and carries a $\Zf$ phase label.
-    \item \emph{Nodes} are derived: a node is the meeting-point of its incident edges, with no independent existence.
+  \item \emph{Events} (edge-creations) are fundamental: the primitive acts of the theory.
+  \item \emph{Edges} are the relations established by events.  Each edge is directed and carries a $\Zf$ phase label.
+  \item \emph{Nodes} are derived: a node is the meeting-point of its incident edges, with no independent existence.
 \end{enumerate}
 A relational $\Zf$ causet is not a static graph.  It is the accumulated record of events---a history of acts of becoming.  The graph at any stage is a snapshot of the history so far.
 
@@ -131,7 +133,7 @@ A relational $\Zf$ causet is not a static graph.  It is the accumulated record o
 Each edge-creation is an \emph{event}.
 
 \begin{definition}\label{def:event}
-An \emph{event} is the creation of a directed edge $e_k = (s \to t,\, \phi_k)$.  If $t$ (or $s$) is new, the event co-constitutes that node.
+  An \emph{event} is the creation of a directed edge $e_k = (s \to t,\, \phi_k)$.  If $t$ (or $s$) is new, the event co-constitutes that node.
 \end{definition}
 
 Events are partially ordered by the crystallisation process.  Nodes are derived, persistent, and accumulative: a node participates in events at different stages.
@@ -142,102 +144,103 @@ The partial order is over events, not nodes.  A directed cycle in the graph is a
 \section{Holonomy and frustration}\label{sec:holonomy}
 
 \begin{definition}[Face]\label{def:face}
-A \emph{face} of $G$ is a directed cycle $C = (v_0, v_1, \ldots, v_{k-1}, v_0)$ with $k \geq 3$ distinct vertices that is \emph{induced}: no edge in $E$ connects two non-adjacent vertices of~$C$.  Faces are considered up to cyclic permutation of vertices.
+  A \emph{face} of $G$ is a directed cycle $C = (v_0, v_1, \ldots, v_{k-1}, v_0)$ with $k \geq 3$ distinct vertices that is \emph{induced}: no edge in $E$ connects two non-adjacent vertices of~$C$.  Faces are considered up to cyclic permutation of vertices.
 \end{definition}
 
 \begin{definition}[Holonomy]\label{def:hol}
-The \emph{holonomy} of a face $C = (v_0, \ldots, v_{k-1}, v_0)$ is
-\begin{equation}\label{eq:hol}
+  The \emph{holonomy} of a face $C = (v_0, \ldots, v_{k-1}, v_0)$ is
+  \begin{equation}\label{eq:hol}
     \Hol(C) = \prod_{j=0}^{k-1} \tilde{\phi}(v_j, v_{j+1})
-\end{equation}
-where indices are mod~$k$ and
-\[
-\tilde{\phi}(u, v) = \begin{cases}
-    \phi(u \to v) & \text{if } u \to v \in E, \\
-    \phi(v \to u)^{-1} & \text{if only } v \to u \in E.
-\end{cases}
-\]
-Reversing the traversal orientation gives $\Hol(C)^{-1}$.
+  \end{equation}
+  where indices are mod~$k$ and
+  \[
+    \tilde{\phi}(u, v) =
+    \begin{cases}
+      \phi(u \to v) & \text{if } u \to v \in E, \\
+      \phi(v \to u)^{-1} & \text{if only } v \to u \in E.
+    \end{cases}
+  \]
+  Reversing the traversal orientation gives $\Hol(C)^{-1}$.
 \end{definition}
 
 \begin{definition}[Frustration]\label{def:frust}
-The \emph{frustration} of a face is $\Frust(C) = d(\Hol(C), 1)$.  The \emph{total frustration} of a labelling is $F = \sum_C \Frust(C)$ over all faces.
+  The \emph{frustration} of a face is $\Frust(C) = d(\Hol(C), 1)$.  The \emph{total frustration} of a labelling is $F = \sum_C \Frust(C)$ over all faces.
 \end{definition}
 
 \begin{proposition}[Frustration is undirected]\label{prop:undirected}
-$\Frust(C)$ is independent of traversal orientation.
+  $\Frust(C)$ is independent of traversal orientation.
 \end{proposition}
 
 \begin{proof}
-Reversing orientation gives holonomy $h^{-1}$.  By \cref{prop:symm}, $d(h^{-1}, 1) = d(h, 1)$.
+  Reversing orientation gives holonomy $h^{-1}$.  By \cref{prop:symm}, $d(h^{-1}, 1) = d(h, 1)$.
 \end{proof}
 
 % ===================================================================
 \section{The conservation law}\label{sec:conservation}
 
 \begin{definition}[Conservation]\label{def:cons}
-A node $v$ \emph{satisfies conservation} if
-\begin{equation}\label{eq:cons}
+  A node $v$ \emph{satisfies conservation} if
+  \begin{equation}\label{eq:cons}
     \prod_{e \in \inp(v)} \phi(e) \;=\; \prod_{e \in \out(v)} \phi(e)
-\end{equation}
-where the empty product is~$1$.  A graph is \emph{conservation-consistent} if every node satisfies conservation.
+  \end{equation}
+  where the empty product is~$1$.  A graph is \emph{conservation-consistent} if every node satisfies conservation.
 \end{definition}
 
 \begin{definition}[Charge]\label{def:charge}
-The \emph{charge} at a node is
-\begin{equation}
+  The \emph{charge} at a node is
+  \begin{equation}
     q(v) = \biggl(\prod_{e \in \inp(v)} \phi(e)\biggr) \cdot \biggl(\prod_{e \in \out(v)} \phi(e)\biggr)^{-1}.
-\end{equation}
-Conservation holds at $v$ iff $q(v) = 1$.
+  \end{equation}
+  Conservation holds at $v$ iff $q(v) = 1$.
 \end{definition}
 
 \begin{proposition}[Uniqueness of the conservation law]\label{prop:consunique}
-Let $R$ be a local balance condition at a node~$v$ in a relational $\Zf$ causet, satisfying:
-\begin{enumerate}[nosep,label=(\roman*)]
+  Let $R$ be a local balance condition at a node~$v$ in a relational $\Zf$ causet, satisfying:
+  \begin{enumerate}[nosep,label=(\roman*)]
     \item \emph{Locality}: $R$ depends only on edges incident to~$v$.
     \item \emph{Group compatibility}: $R$ is expressible in terms of the $\Zf$ multiplication, with no external parameters.
     \item \emph{Node symmetry}: $R$ does not distinguish between nodes---it takes the same form at every~$v$.
-\end{enumerate}
-Then, under the assumption that no element of $\Zf$ is distinguished independently of the relational structure, $R$ is equivalent to $\prod_{\inp} \phi(e) = \prod_{\out} \phi(e)$.
+  \end{enumerate}
+  Then, under the assumption that no element of $\Zf$ is distinguished independently of the relational structure, $R$ is equivalent to $\prod_{\inp} \phi(e) = \prod_{\out} \phi(e)$.
 \end{proposition}
 
 \begin{proof}
-By (i) and (ii), $R$ relates the incoming and outgoing phase products through the group operation.  The most general such relation is $\prod_{\inp} \phi = g \cdot \prod_{\out} \phi$ for some fixed $g \in \Zf$.  By (iii), $g$ must be the same at every node.  But $\Zf$ has no canonical non-identity element: there is no distinguished choice of $g \neq 1$ available without additional structure.  Any $g \neq 1$ would impose an asymmetry between nodes that is not grounded in the ontology.  Therefore $g = 1$, giving~\eqref{eq:cons}.
+  By (i) and (ii), $R$ relates the incoming and outgoing phase products through the group operation.  The most general such relation is $\prod_{\inp} \phi = g \cdot \prod_{\out} \phi$ for some fixed $g \in \Zf$.  By (iii), $g$ must be the same at every node.  But $\Zf$ has no canonical non-identity element: there is no distinguished choice of $g \neq 1$ available without additional structure.  Any $g \neq 1$ would impose an asymmetry between nodes that is not grounded in the ontology.  Therefore $g = 1$, giving~\eqref{eq:cons}.
 
-At the philosophical level, this condition corresponds to the requirement of local non-contradiction developed in the companion paper; here it appears in its simplest algebraic form.
+  At the philosophical level, this condition corresponds to the requirement of local non-contradiction developed in the companion paper; here it appears in its simplest algebraic form.
 \end{proof}
 
 \begin{proposition}[Global charge conservation]\label{prop:globalcharge}
-$\prod_{v \in V} q(v) = 1$.
+  $\prod_{v \in V} q(v) = 1$.
 \end{proposition}
 
 \begin{proof}
-Each edge $e = (u \to v,\, \phi)$ contributes $\phi^{-1}$ to $q(u)$ (via the outgoing product) and $\phi$ to $q(v)$ (via the incoming product).  The global product telescopes to~$1$.
+  Each edge $e = (u \to v,\, \phi)$ contributes $\phi^{-1}$ to $q(u)$ (via the outgoing product) and $\phi$ to $q(v)$ (via the incoming product).  The global product telescopes to~$1$.
 \end{proof}
 
 % ===================================================================
 \section{The two-layer architecture}\label{sec:layers}
 
 \begin{definition}[Layer~1]\label{def:L1}
-The \emph{causet layer} (Layer~1) is the directed graph $(V, E, \phi)$ itself: the append-only, directed structure of edges and their $\Zf$ labels.
+  The \emph{causet layer} (Layer~1) is the directed graph $(V, E, \phi)$ itself: the append-only, directed structure of edges and their $\Zf$ labels.
 \end{definition}
 
 \begin{definition}[Layer~2]\label{def:L2}
-The \emph{holonomy landscape} (Layer~2) is the collection of all faces, their holonomies, their frustrations, and the charge distribution.  Layer~2 is derived from Layer~1: given $(V, E, \phi)$, every Layer~2 quantity is computable.
+  The \emph{holonomy landscape} (Layer~2) is the collection of all faces, their holonomies, their frustrations, and the charge distribution.  Layer~2 is derived from Layer~1: given $(V, E, \phi)$, every Layer~2 quantity is computable.
 \end{definition}
 
 \begin{theorem}[Direction-insensitivity of Layer~2]\label{thm:split}
-Layer~1 is directed.  Layer~2 observables are direction-insensitive.
+  Layer~1 is directed.  Layer~2 observables are direction-insensitive.
 \end{theorem}
 
 \begin{proof}
-Layer~1 is directed by definition: $u \to v \neq v \to u$.
+  Layer~1 is directed by definition: $u \to v \neq v \to u$.
 
-For Layer~2: frustration is direction-insensitive (\cref{prop:undirected}).  Charge is a scalar at a node (\cref{def:charge}).  Since frustration and charge are the observable quantities of Layer~2, and both are insensitive to edge direction, Layer~2 observables carry no directional information.
+  For Layer~2: frustration is direction-insensitive (\cref{prop:undirected}).  Charge is a scalar at a node (\cref{def:charge}).  Since frustration and charge are the observable quantities of Layer~2, and both are insensitive to edge direction, Layer~2 observables carry no directional information.
 \end{proof}
 
 \begin{remark}[Interpretation]
-\Cref{thm:split} establishes a structural distinction: Layer~1 is directed; Layer~2 is not.  We do not claim that spacetime structure has been derived; rather, the formal result admits an interpretation suggestive of such a structure---Layer~1 as causal/temporal, Layer~2 as constraint/relational, possibly underlying spatial geometry.  We adopt this as a heuristic guide in what follows, while noting that a rigorous identification with spacetime requires showing that Layer~2 structure organises into spatial dimensions (the open problem of dimensional stability).
+  \Cref{thm:split} establishes a structural distinction: Layer~1 is directed; Layer~2 is not.  We do not claim that spacetime structure has been derived; rather, the formal result admits an interpretation suggestive of such a structure---Layer~1 as causal/temporal, Layer~2 as constraint/relational, possibly underlying spatial geometry.  We adopt this as a heuristic guide in what follows, while noting that a rigorous identification with spacetime requires showing that Layer~2 structure organises into spatial dimensions (the open problem of dimensional stability).
 \end{remark}
 
 % ===================================================================
@@ -246,100 +249,100 @@ For Layer~2: frustration is direction-insensitive (\cref{prop:undirected}).  Cha
 We illustrate the two-layer architecture with two small causets.
 
 \begin{example}[Frustrated triangle]\label{ex:triangle}
-Consider the relational $\Zf$ causet with three nodes $\{a, b, c\}$ and three edges, all carrying phase~$i$.
+  Consider the relational $\Zf$ causet with three nodes $\{a, b, c\}$ and three edges, all carrying phase~$i$.
 
-\medskip
-\noindent\textbf{Layer 1} (directed graph with $\Zf$ labels):
+  \medskip
+  \noindent\textbf{Layer 1} (directed graph with $\Zf$ labels):
 
-\begin{center}
-\begin{tikzpicture}[
-    node distance=2.4cm,
-    vertex/.style={circle, draw, minimum size=8mm, inner sep=0pt, font=\small},
-    edge label/.style={font=\small, fill=white, inner sep=1.5pt},
-    >={Stealth[length=5pt]}
-]
-    \node[vertex] (a) {$a$};
-    \node[vertex, right=of a] (b) {$b$};
-    \node[vertex, below right=1.5cm and 1.2cm of a] (c) {$c$};
+  \begin{center}
+    \begin{tikzpicture}[
+        node distance=2.4cm,
+        vertex/.style={circle, draw, minimum size=8mm, inner sep=0pt, font=\small},
+        edge label/.style={font=\small, fill=white, inner sep=1.5pt},
+        >={Stealth[length=5pt]}
+      ]
+      \node[vertex] (a) {$a$};
+      \node[vertex, right=of a] (b) {$b$};
+      \node[vertex, below right=1.5cm and 1.2cm of a] (c) {$c$};
 
-    \draw[->, thick] (a) -- node[edge label, above] {$i$} (b);
-    \draw[->, thick] (b) -- node[edge label, right] {$i$} (c);
-    \draw[->, thick] (c) -- node[edge label, left] {$i$} (a);
-\end{tikzpicture}
-\end{center}
+      \draw[->, thick] (a) -- node[edge label, above] {$i$} (b);
+      \draw[->, thick] (b) -- node[edge label, right] {$i$} (c);
+      \draw[->, thick] (c) -- node[edge label, left] {$i$} (a);
+    \end{tikzpicture}
+  \end{center}
 
-Three directed edges, each with phase~$i$.  The direction matters: $a \to b$ means $b$ is derived from~$a$.  Reversing any edge would conjugate its phase ($i \mapsto -i$).
+  Three directed edges, each with phase~$i$.  The direction matters: $a \to b$ means $b$ is derived from~$a$.  Reversing any edge would conjugate its phase ($i \mapsto -i$).
 
-\medskip
-\noindent\textbf{Layer 2} (derived holonomy landscape):
+  \medskip
+  \noindent\textbf{Layer 2} (derived holonomy landscape):
 
-The graph contains one face: the induced 3-cycle $(a, b, c, a)$.
+  The graph contains one face: the induced 3-cycle $(a, b, c, a)$.
 
-\emph{Holonomy.}  Traversing in the directed sense:
-\[
-\Hol(a \to b \to c \to a) = i \cdot i \cdot i = i^3 = -i.
-\]
-Traversing in the reverse sense gives $\Hol = (-i)^{-1} = i$.  The two values are conjugate (inverses in $\Zf$).
+  \emph{Holonomy.}  Traversing in the directed sense:
+  \[
+    \Hol(a \to b \to c \to a) = i \cdot i \cdot i = i^3 = -i.
+  \]
+  Traversing in the reverse sense gives $\Hol = (-i)^{-1} = i$.  The two values are conjugate (inverses in $\Zf$).
 
-\emph{Frustration.}  $\Frust = d(-i, 1) = 1$.  Equivalently, $d(i, 1) = 1$: the same value regardless of traversal direction.  \textbf{Frustration is undirected}---it is a property of the cycle as an unoriented loop, not of its traversal.
+  \emph{Frustration.}  $\Frust = d(-i, 1) = 1$.  Equivalently, $d(i, 1) = 1$: the same value regardless of traversal direction.  \textbf{Frustration is undirected}---it is a property of the cycle as an unoriented loop, not of its traversal.
 
-\emph{Charge.}  At each node, one edge arrives and one departs, both carrying~$i$:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Node & $\prod \phi_{\inp}$ & $\prod \phi_{\out}$ & $q(v)$ \\
-\midrule
-$a$ & $i$ & $i$ & $1$ \\
-$b$ & $i$ & $i$ & $1$ \\
-$c$ & $i$ & $i$ & $1$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-All charges vanish.  The graph is conservation-consistent.
+  \emph{Charge.}  At each node, one edge arrives and one departs, both carrying~$i$:
+  \begin{center}
+    \begin{tabular}{lccc}
+      \toprule
+      Node & $\prod \phi_{\inp}$ & $\prod \phi_{\out}$ & $q(v)$ \\
+      \midrule
+      $a$ & $i$ & $i$ & $1$ \\
+      $b$ & $i$ & $i$ & $1$ \\
+      $c$ & $i$ & $i$ & $1$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  All charges vanish.  The graph is conservation-consistent.
 
-\medskip
-\noindent\textbf{The structural split in action.}  Layer~1 carries directed information (the arrows, the distinction between $a \to b$ and $b \to a$).  Layer~2 carries undirected information (frustration~$= 1$, charges~$= 1$ at every node).  This concretely illustrates \cref{thm:split}: although the underlying graph is directed, the derived frustration is insensitive to orientation.
+  \medskip
+  \noindent\textbf{The structural split in action.}  Layer~1 carries directed information (the arrows, the distinction between $a \to b$ and $b \to a$).  Layer~2 carries undirected information (frustration~$= 1$, charges~$= 1$ at every node).  This concretely illustrates \cref{thm:split}: although the underlying graph is directed, the derived frustration is insensitive to orientation.
 \end{example}
 
 \begin{remark}
-An analogous triangle with $\phi = -1$ (opposition) yields holonomy $(-1)^3 = -1$ and frustration~$2$, illustrating the distinction between otherness and opposition modes.  The difference in frustration---$1$ for otherness, $2$ for opposition---reappears in the bootstrap analysis (\cref{sec:nevertarget}).
+  An analogous triangle with $\phi = -1$ (opposition) yields holonomy $(-1)^3 = -1$ and frustration~$2$, illustrating the distinction between otherness and opposition modes.  The difference in frustration---$1$ for otherness, $2$ for opposition---reappears in the bootstrap analysis (\cref{sec:nevertarget}).
 \end{remark}
 
 \begin{example}[Charged pair: Layer~1 without Layer~2]\label{ex:charged}
-The minimal graph: a single edge $a \to b$ with phase~$i$.
+  The minimal graph: a single edge $a \to b$ with phase~$i$.
 
-\begin{center}
-\begin{tikzpicture}[
-    node distance=2.8cm,
-    vertex/.style={circle, draw, minimum size=8mm, inner sep=0pt, font=\small},
-    edge label/.style={font=\small, fill=white, inner sep=1.5pt},
-    >={Stealth[length=5pt]}
-]
-    \node[vertex] (a) {$a$};
-    \node[vertex, right=of a] (b) {$b$};
+  \begin{center}
+    \begin{tikzpicture}[
+        node distance=2.8cm,
+        vertex/.style={circle, draw, minimum size=8mm, inner sep=0pt, font=\small},
+        edge label/.style={font=\small, fill=white, inner sep=1.5pt},
+        >={Stealth[length=5pt]}
+      ]
+      \node[vertex] (a) {$a$};
+      \node[vertex, right=of a] (b) {$b$};
 
-    \draw[->, thick] (a) -- node[edge label, above] {$i$} (b);
-\end{tikzpicture}
-\end{center}
+      \draw[->, thick] (a) -- node[edge label, above] {$i$} (b);
+    \end{tikzpicture}
+  \end{center}
 
-\noindent\textbf{Layer 1:}  One directed edge.  $b$ is derived from~$a$.
+  \noindent\textbf{Layer 1:}  One directed edge.  $b$ is derived from~$a$.
 
-\noindent\textbf{Layer 2:}  No faces exist ($k \geq 3$ required), so there is no holonomy and hence no frustration; the constraint layer has not yet come into existence.  This graph has Layer~1 content but no Layer~2 content: directed structure without constraint structure.
+  \noindent\textbf{Layer 2:}  No faces exist ($k \geq 3$ required), so there is no holonomy and hence no frustration; the constraint layer has not yet come into existence.  This graph has Layer~1 content but no Layer~2 content: directed structure without constraint structure.
 
-\emph{Charge.}  Conservation fails at both nodes:
-\begin{center}
-\begin{tabular}{lccc}
-\toprule
-Node & $\prod \phi_{\inp}$ & $\prod \phi_{\out}$ & $q(v)$ \\
-\midrule
-$a$ & $1$ (empty) & $i$ & $-i$ \\
-$b$ & $i$ & $1$ (empty) & $i$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-The charges are conjugate: $q(a) \cdot q(b) = (-i)(i) = 1$ (\cref{prop:globalcharge}).
+  \emph{Charge.}  Conservation fails at both nodes:
+  \begin{center}
+    \begin{tabular}{lccc}
+      \toprule
+      Node & $\prod \phi_{\inp}$ & $\prod \phi_{\out}$ & $q(v)$ \\
+      \midrule
+      $a$ & $1$ (empty) & $i$ & $-i$ \\
+      $b$ & $i$ & $1$ (empty) & $i$ \\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  The charges are conjugate: $q(a) \cdot q(b) = (-i)(i) = 1$ (\cref{prop:globalcharge}).
 
-This is the initial state of the growth sequence: a charged pair with directed structure but no constraint structure.  The frustrated triangle of \cref{ex:triangle} is what it grows into---acquiring Layer~2 content when the first face closes.
+  This is the initial state of the growth sequence: a charged pair with directed structure but no constraint structure.  The frustrated triangle of \cref{ex:triangle} is what it grows into---acquiring Layer~2 content when the first face closes.
 \end{example}
 
 % ===================================================================
@@ -347,9 +350,9 @@ This is the initial state of the growth sequence: a charged pair with directed s
 
 The theory rests on three postulates:
 \begin{enumerate}[nosep]
-    \item Directed edges with $\Zf$ phase labels are fundamental.  Nodes are derived.
-    \item All dynamics is local.
-    \item Algebraic consistency: the conservation law~\eqref{eq:cons} holds; new edges must be consistent with existing local phase structure.
+  \item Directed edges with $\Zf$ phase labels are fundamental.  Nodes are derived.
+  \item All dynamics is local.
+  \item Algebraic consistency: the conservation law~\eqref{eq:cons} holds; new edges must be consistent with existing local phase structure.
 \end{enumerate}
 
 The dynamics creates structure through two moves: \emph{sprouting} (extending an edge to a new node) and \emph{bridging} (connecting two existing nodes, creating faces).  We adopt the dynamical hypothesis that frustration drives growth: regions of high frustration create pressure for new edges that redistribute it, and bridging is preferred over sprouting because it immediately creates faces, enabling constraint propagation.  We adopt this as the minimal dynamics coupling Layer~2 structure back to Layer~1 growth: frustration is the only scalar quantity derived from holonomy that is available at Layer~2 without additional assumptions.  This hypothesis is not proved here; it is motivated by the crystallisation dynamics developed in the companion physics paper and is assumed in the dynamical arguments (but not the theorems) that follow.
@@ -360,15 +363,15 @@ The dynamics creates structure through two moves: \emph{sprouting} (extending an
 We now ask what the minimal structure is from which dynamics can proceed.
 
 \begin{definition}[Growth sequence]\label{def:bootstrap}
-A \emph{growth sequence} is a finite sequence of events $e_1, \ldots, e_n$ starting from the empty graph, where each $e_k = (s_k \to t_k,\, \phi_k)$ either bridges or sprouts, and $e_1 = (a \to b,\, \phi)$ co-constitutes both $a$ (\emph{void}, ground-pole) and $b$ (product-pole).
+  A \emph{growth sequence} is a finite sequence of events $e_1, \ldots, e_n$ starting from the empty graph, where each $e_k = (s_k \to t_k,\, \phi_k)$ either bridges or sprouts, and $e_1 = (a \to b,\, \phi)$ co-constitutes both $a$ (\emph{void}, ground-pole) and $b$ (product-pole).
 \end{definition}
 
 \begin{definition}[Sprouting tree]\label{def:tree}
-The \emph{sprouting tree} of a growth sequence is the subgraph of all sprouting edges: a directed tree rooted at~$b$ with the edge $a \to b$ as its root edge from outside the tree.
+  The \emph{sprouting tree} of a growth sequence is the subgraph of all sprouting edges: a directed tree rooted at~$b$ with the edge $a \to b$ as its root edge from outside the tree.
 \end{definition}
 
 \begin{definition}[Self-propagating]\label{def:selfprop}
-A growth sequence is \emph{self-propagating} if the resulting graph contains at least one frustrated face.
+  A growth sequence is \emph{self-propagating} if the resulting graph contains at least one frustrated face.
 \end{definition}
 
 Charges alone do not suffice for self-propagation: crystallisation operates through constraint propagation along faces, which requires holonomy structure that a faceless graph lacks.
@@ -379,61 +382,61 @@ Charges alone do not suffice for self-propagation: crystallisation operates thro
 The first event co-constitutes both nodes of the first edge.  Under the causal reading, $b$ is derived from~$a$.  Whether $a$ can subsequently appear as a target---whether later structure can claim causal priority over the origin---is an interpretive question with algebraic consequences.
 
 \begin{definition}[Participatory void]\label{def:targetable}
-$a$ may appear as the target of edges created after~$e_1$.
+  $a$ may appear as the target of edges created after~$e_1$.
 \end{definition}
 
 \begin{definition}[Absolute void]\label{def:nevertarget}
-$a$ never appears as a target: $t_k \neq a$ for all~$k$.
+  $a$ never appears as a target: $t_k \neq a$ for all~$k$.
 \end{definition}
 
 Both are compatible with the postulates.  The \emph{participatory void} allows the origin to be drawn back into the structure it seeds---it becomes part of the spatial fabric.  The \emph{absolute void} is permanently upstream: the uncaused ground, outside the world it gives rise to.  We develop both.
 
 \begin{remark}
-The distinction here is solely about whether the void can be a \emph{target} of later edges.  Under both interpretations, the void may serve as a source (emitting one or more edges).
+  The distinction here is solely about whether the void can be a \emph{target} of later edges.  Under both interpretations, the void may serve as a source (emitting one or more edges).
 \end{remark}
 
 % ===================================================================
 \section{Algebraic lemmas}\label{sec:lemmas}
 
 \begin{lemma}[Phase propagation]\label{lem:chain}
-In a conservation-consistent directed path where each intermediate node has exactly one incoming and one outgoing edge, all edges carry the same phase.
+  In a conservation-consistent directed path where each intermediate node has exactly one incoming and one outgoing edge, all edges carry the same phase.
 \end{lemma}
 
 \begin{proof}
-Conservation at each intermediate node equates incoming and outgoing phase.
+  Conservation at each intermediate node equates incoming and outgoing phase.
 \end{proof}
 
 \begin{lemma}[No nontrivial idempotents]\label{lem:idemp}
-The only solution to $\phi^2 = \phi$ in $\Zf$ is $\phi = 1$.
+  The only solution to $\phi^2 = \phi$ in $\Zf$ is $\phi = 1$.
 \end{lemma}
 
 \begin{proof}
-$1^2 = 1$;\; $i^2 = -1 \neq i$;\; $(-1)^2 = 1 \neq -1$;\; $(-i)^2 = -1 \neq -i$.
+  $1^2 = 1$;\; $i^2 = -1 \neq i$;\; $(-1)^2 = 1 \neq -1$;\; $(-i)^2 = -1 \neq -i$.
 
-Alternatively: in any group, $\phi^2 = \phi$ implies $\phi = e$.
+  Alternatively: in any group, $\phi^2 = \phi$ implies $\phi = e$.
 \end{proof}
 
 \begin{lemma}[Junction constraint]\label{lem:junction}
-A conservation-consistent node with two incoming edges of phase~$\phi$ and one outgoing edge of phase~$\phi$ satisfies $\phi = 1$.
+  A conservation-consistent node with two incoming edges of phase~$\phi$ and one outgoing edge of phase~$\phi$ satisfies $\phi = 1$.
 \end{lemma}
 
 \begin{proof}
-$\phi^2 = \phi$.  Apply \cref{lem:idemp}.
+  $\phi^2 = \phi$.  Apply \cref{lem:idemp}.
 \end{proof}
 
 % ===================================================================
 \section{Participatory void}\label{sec:targetable}
 
 \begin{theorem}\label{thm:voidreturn}
-Under the participatory void with $\phi \neq 1$, the minimal self-propagating seed is the triangle $a \to b \to c \to a$: three edges, all phase~$\phi$, holonomy~$\phi^3$.
+  Under the participatory void with $\phi \neq 1$, the minimal self-propagating seed is the triangle $a \to b \to c \to a$: three edges, all phase~$\phi$, holonomy~$\phi^3$.
 \end{theorem}
 
 \begin{proof}
-Fewer than three edges cannot form a face.  Three edges $a \to b$, $b \to c$, $c \to a$: conservation forces all phases to~$\phi$ (\cref{lem:chain}).  Holonomy $\phi^3 \neq 1$ for $\phi \neq 1$.  No other three-edge growth sequence with a participatory void creates a face.
+  Fewer than three edges cannot form a face.  Three edges $a \to b$, $b \to c$, $c \to a$: conservation forces all phases to~$\phi$ (\cref{lem:chain}).  Holonomy $\phi^3 \neq 1$ for $\phi \neq 1$.  No other three-edge growth sequence with a participatory void creates a face.
 \end{proof}
 
 \begin{remark}
-The void-return resolves all charges and does not distinguish Dirac-type ($\phi = \pm i$, holonomy $\mp i$, frustration~$1$) from Majorana-type ($\phi = -1$, holonomy~$-1$, frustration~$2$).  (We use ``Dirac-type'' and ``Majorana-type'' as structural labels chosen by analogy only, reflecting the conjugate-pair vs.\ self-conjugate distinction in~$\Zf$.  No claim is made about correspondence to fermion physics.)
+  The void-return resolves all charges and does not distinguish Dirac-type ($\phi = \pm i$, holonomy $\mp i$, frustration~$1$) from Majorana-type ($\phi = -1$, holonomy~$-1$, frustration~$2$).  (We use ``Dirac-type'' and ``Majorana-type'' as structural labels chosen by analogy only, reflecting the conjugate-pair vs.\ self-conjugate distinction in~$\Zf$.  No claim is made about correspondence to fermion physics.)
 \end{remark}
 
 % ===================================================================
@@ -442,9 +445,9 @@ The void-return resolves all charges and does not distinguish Dirac-type ($\phi 
 Under the absolute void, no face passes through~$a$.  The void has no Layer~2 content: it is purely temporal.
 
 \begin{theorem}\label{thm:nevertarget}
-Under the absolute void with single emission $e_1 = (a \to b,\, \phi)$, $\phi \neq 1$:
+  Under the absolute void with single emission $e_1 = (a \to b,\, \phi)$, $\phi \neq 1$:
 
-\begin{enumerate}[nosep,label=(\alph*)]
+  \begin{enumerate}[nosep,label=(\alph*)]
     \item Bridges from internal tree nodes carry phase~$1$.  Bridges from leaves carry phase~$\phi$ and force $\phi = 1$ at internal targets.
 
     \item \emph{Dirac-type} ($\phi = \pm i$): minimum 5 edges.  Chain $a \to b \to c \to d \to e$, bridge $d \to b$ (phase~$1$).  Triangle $b \to c \to d \to b$, holonomy~$-1$.
@@ -452,62 +455,62 @@ Under the absolute void with single emission $e_1 = (a \to b,\, \phi)$, $\phi \n
     \item \emph{Majorana-type} ($\phi = -1$): minimum 6 edges.  Chain $a \to b \to c \to d \to e \to f$, bridge $e \to b$ (phase~$1$).  $4$-cycle $b \to c \to d \to e \to b$, holonomy~$-1$.
 
     \item Dirac-type reaches frustration in fewer edges than Majorana-type.
-\end{enumerate}
+  \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-\emph{Part (a).}  All tree edges carry~$\phi$ (\cref{lem:chain}).  A leaf source $u$ with one incoming~$\phi$ and one outgoing bridge~$\psi$: conservation gives $\psi = \phi$.  At an internal target: $\phi \cdot \phi = \phi$, so $\phi = 1$ (\cref{lem:junction}).  An internal source $u$ with one incoming~$\phi$ and one outgoing~$\phi$ (tree child) plus bridge~$\psi$: $\phi = \phi \cdot \psi$, so $\psi = 1$.
+  \emph{Part (a).}  All tree edges carry~$\phi$ (\cref{lem:chain}).  A leaf source $u$ with one incoming~$\phi$ and one outgoing bridge~$\psi$: conservation gives $\psi = \phi$.  At an internal target: $\phi \cdot \phi = \phi$, so $\phi = 1$ (\cref{lem:junction}).  An internal source $u$ with one incoming~$\phi$ and one outgoing~$\phi$ (tree child) plus bridge~$\psi$: $\phi = \phi \cdot \psi$, so $\psi = 1$.
 
-\emph{Part (b).}  Triangle from two tree edges and one bridge: holonomy $\phi^2 \cdot 1 = \phi^2$.  For $\phi = \pm i$: $\phi^2 = -1$.  Both bridge endpoints must be internal (each needs a tree child).  Shortest chain: $a \to b \to c \to d \to e$.  Bridge $d \to b$.  Total: 5.  Conservation holds at all interior nodes.
+  \emph{Part (b).}  Triangle from two tree edges and one bridge: holonomy $\phi^2 \cdot 1 = \phi^2$.  For $\phi = \pm i$: $\phi^2 = -1$.  Both bridge endpoints must be internal (each needs a tree child).  Shortest chain: $a \to b \to c \to d \to e$.  Bridge $d \to b$.  Total: 5.  Conservation holds at all interior nodes.
 
-Four edges: chain $a \to b \to c \to d$ plus bridge.  $c \to b$ gives a 2-cycle.  $d \to b$: leaf-sourced, forces $\phi = 1$.  No frustrated face.
+  Four edges: chain $a \to b \to c \to d$ plus bridge.  $c \to b$ gives a 2-cycle.  $d \to b$: leaf-sourced, forces $\phi = 1$.  No frustrated face.
 
-\emph{Part (c).}  Triangle holonomy $(-1)^2 = 1$: flat.  A 4-cycle with three tree edges and bridge: $(-1)^3 \cdot 1 = -1$.  Chain $a \to b \to c \to d \to e \to f$, bridge $e \to b$.  Total: 6.
+  \emph{Part (c).}  Triangle holonomy $(-1)^2 = 1$: flat.  A 4-cycle with three tree edges and bridge: $(-1)^3 \cdot 1 = -1$.  Chain $a \to b \to c \to d \to e \to f$, bridge $e \to b$.  Total: 6.
 
-Five edges give at most a triangle (holonomy~$1$).
+  Five edges give at most a triangle (holonomy~$1$).
 
-\emph{Part (d).}  $5 < 6$.
+  \emph{Part (d).}  $5 < 6$.
 \end{proof}
 
 \begin{corollary}[Dirac-type selection]\label{cor:dirac}
-Under the absolute void, the $\Zf$ algebra selects the otherness modes ($\phi = \pm i$) over the opposition mode ($\phi = -1$) by economy.
+  Under the absolute void, the $\Zf$ algebra selects the otherness modes ($\phi = \pm i$) over the opposition mode ($\phi = -1$) by economy.
 \end{corollary}
 
 \begin{corollary}[Linear tree]\label{cor:linear}
-Under the absolute void with $\phi \neq 1$, the sprouting tree is linear (at most one child per node) until bridges are added.
+  Under the absolute void with $\phi \neq 1$, the sprouting tree is linear (at most one child per node) until bridges are added.
 \end{corollary}
 
 \begin{proof}
-Multi-child sprouting from one node with a single incoming phase~$\phi$: $\phi = \phi^d$ for $d \geq 2$ outgoing tree edges, giving $\phi^{d-1} = 1$.  For $d = 2$: $\phi = 1$ (\cref{lem:idemp}).
+  Multi-child sprouting from one node with a single incoming phase~$\phi$: $\phi = \phi^d$ for $d \geq 2$ outgoing tree edges, giving $\phi^{d-1} = 1$.  For $d = 2$: $\phi = 1$ (\cref{lem:idemp}).
 \end{proof}
 
 The pre-bridge universe is one-dimensional.  The frustration-driven dynamics escapes linearity at the earliest opportunity: bridging creates faces, which sprouting cannot.  One dimension is the forced starting point; the dynamics departs from it as soon as a viable bridge exists.
 
 \begin{proposition}[Balanced emission]\label{prop:balanced}
-With an absolute void emitting $\phi$ and $\phi^{-1}$ (product~$1$, no void charge), the first frustrated face requires 6 edges.
+  With an absolute void emitting $\phi$ and $\phi^{-1}$ (product~$1$, no void charge), the first frustrated face requires 6 edges.
 \end{proposition}
 
 \begin{proof}
-$e_1 = (a \to b,\, \phi)$, $e_2 = (a \to d,\, \phi^{-1})$, $e_3 = (b \to c,\, \phi)$, $e_4 = (d \to c,\, \phi^{-1})$, $e_5 = (c \to f,\, 1)$, $e_6 = (f \to b,\, 1)$.  Triangle $b \to c \to f \to b$: holonomy~$\phi$.
+  $e_1 = (a \to b,\, \phi)$, $e_2 = (a \to d,\, \phi^{-1})$, $e_3 = (b \to c,\, \phi)$, $e_4 = (d \to c,\, \phi^{-1})$, $e_5 = (c \to f,\, 1)$, $e_6 = (f \to b,\, 1)$.  Triangle $b \to c \to f \to b$: holonomy~$\phi$.
 \end{proof}
 
 % ===================================================================
 \section{Comparison of interpretations}\label{sec:comparison}
 
 \begin{center}
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{p{4.5cm}cc}
-\toprule
-& \textbf{Participatory} & \textbf{Absolute} \\
-\midrule
-First frustration (Dirac-type) & 3 edges & 5 edges \\
-First frustration (Majorana-type) & 3 edges & 6 edges \\
-Dirac/Majorana distinguished & No & Yes \\
-Void charge & Resolved & Permanent \\
-Void on a face & Yes & No \\
-Void's Layer~2 role & Spatial & None \\
-\bottomrule
-\end{tabular}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{p{4.5cm}cc}
+    \toprule
+    & \textbf{Participatory} & \textbf{Absolute} \\
+    \midrule
+    First frustration (Dirac-type) & 3 edges & 5 edges \\
+    First frustration (Majorana-type) & 3 edges & 6 edges \\
+    Dirac/Majorana distinguished & No & Yes \\
+    Void charge & Resolved & Permanent \\
+    Void on a face & Yes & No \\
+    Void's Layer~2 role & Spatial & None \\
+    \bottomrule
+  \end{tabular}
 \end{center}
 
 The participatory void is more economical (3 vs.\ 5 edges) but does not select between initial phases.  The absolute void is less economical but resolves the Dirac-type/Majorana-type ambiguity: otherness is preferred over opposition by economy.  Under the participatory void, the selection must come from subsequent dynamics.
