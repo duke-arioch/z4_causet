@@ -136,7 +136,7 @@ Each edge-creation is an \emph{event}.
   An \emph{event} is the creation of a directed edge $e_k = (s \to t,\, \phi_k)$.  If $t$ (or $s$) is new, the event co-constitutes that node.
 \end{definition}
 
-Events are partially ordered by the crystallisation process.  Nodes are derived, persistent, and accumulative: a node participates in events at different stages.
+Events are partially ordered by their causal dependencies.  Nodes are derived, persistent, and accumulative: a node participates in events at different stages.
 
 The partial order is over events, not nodes.  A directed cycle in the graph is a cycle among nodes, not among events; the event ordering is always acyclic, even when the node graph contains directed cycles.
 
