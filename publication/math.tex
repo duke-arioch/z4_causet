@@ -45,7 +45,7 @@
 \maketitle
 
 \begin{abstract}
-  A companion paper argues that the cyclic group $\Zf$ is the minimal algebra (within stated constraints) carrying the relational concepts of identity, opposition, and irreducible otherness.  Here we develop the mathematical framework that follows: relational $\Zf$ causets (directed graphs with $\Zf$ phase labels), a node conservation law entailed by algebraic consistency, and a two-layer architecture in which the directed graph provides causal structure while the derived holonomy landscape provides constraint structure.  We prove that a structural split is inherent in the algebra: Layer~2 observables are direction-insensitive.  We analyse initial conditions under two interpretations of the origin---the \emph{participatory void} and the \emph{absolute void}---and show that under the more austere interpretation, the otherness modes ($\phi = \pm i$) reach self-propagating dynamics in fewer steps than the opposition mode ($\phi = -1$).
+  A companion paper argues that the cyclic group $\Zf$ is the minimal algebra (within stated constraints) carrying the relational concepts of identity, opposition, and irreducible otherness.  Here we develop the mathematical framework that follows: relational $\Zf$ causets (directed graphs with $\Zf$ phase labels), a node conservation law entailed by algebraic consistency, and a two-layer architecture in which the directed graph provides causal structure while the derived constraint landscape provides orientation-invariant structure.  We prove that a structural split is inherent in the algebra: Layer~2 observables are direction-insensitive.  We analyse initial conditions under two interpretations of the origin---the \emph{participatory void} and the \emph{absolute void}---and show that under the more austere interpretation, the otherness modes ($\phi = \pm i$) reach self-propagating dynamics in fewer steps than the opposition mode ($\phi = -1$).
 \end{abstract}
 
 \tableofcontents
@@ -226,8 +226,12 @@ The partial order is over events, not nodes.  A directed cycle in the graph is a
 \end{definition}
 
 \begin{definition}[Layer~2]\label{def:L2}
-  The \emph{holonomy landscape} (Layer~2) is the collection of all faces, their holonomies, their frustrations, and the charge distribution.  Layer~2 is derived from Layer~1: given $(V, E, \phi)$, every Layer~2 quantity is computable.
+  The \emph{constraint landscape} (Layer~2) consists of the orientation-invariant quantities derived from the face and node structure.  For faces: frustration (the Cayley distance of holonomy from the identity), equivalently the inversion class $\{h, h^{-1}\}$.  For nodes: the conservation status ($q(v) = 1$ or $q(v) \neq 1$), equivalently the inversion class $\{q, q^{-1}\}$.  Equivalently, Layer~2 observables are functions of the relational data that are invariant under the involution $x \mapsto x^{-1}$.  Layer~2 is derived from Layer~1: given $(V, E, \phi)$, every Layer~2 quantity is computable.  Holonomy itself is \emph{not} a Layer~2 observable: its value depends on traversal direction (reversing orientation sends $\Hol(C) \mapsto \Hol(C)^{-1}$).  Similarly, specific charge values (e.g.\ $q = i$ vs.\ $q = -i$) are Layer~1 quantities: reversing all edges at a node sends $q \mapsto q^{-1}$.  What Layer~2 sees are the inversion classes, not the specific values.
 \end{definition}
+
+\begin{remark}
+  Layer~2 is the quotient of the relational structure by orientation reversal.  This characterisation applies uniformly to all Layer~2 observables and is not specific to any particular quantity.
+\end{remark}
 
 \begin{theorem}[Direction-insensitivity of Layer~2]\label{thm:split}
   Layer~1 is directed.  Layer~2 observables are direction-insensitive.
@@ -236,7 +240,7 @@ The partial order is over events, not nodes.  A directed cycle in the graph is a
 \begin{proof}
   Layer~1 is directed by definition: $u \to v \neq v \to u$.
 
-  For Layer~2: frustration is direction-insensitive (\cref{prop:undirected}).  Charge is a scalar at a node (\cref{def:charge}).  Since frustration and charge are the observable quantities of Layer~2, and both are insensitive to edge direction, Layer~2 observables carry no directional information.
+  For Layer~2: frustration is direction-insensitive (\cref{prop:undirected}).  Conservation status ($q = 1$ or not) is direction-insensitive: reversing edges at a node sends $q \mapsto q^{-1}$, so $q = 1$ iff $q^{-1} = 1$.  Since the Layer~2 observables---frustration and conservation status---are both insensitive to edge direction, Layer~2 carries no directional information.
 \end{proof}
 
 \begin{remark}[Interpretation]
@@ -274,7 +278,7 @@ We illustrate the two-layer architecture with two small causets.
   Three directed edges, each with phase~$i$.  The direction matters: $a \to b$ means $b$ is derived from~$a$.  Reversing any edge would conjugate its phase ($i \mapsto -i$).
 
   \medskip
-  \noindent\textbf{Layer 2} (derived holonomy landscape):
+  \noindent\textbf{Layer 2} (derived constraint landscape):
 
   The graph contains one face: the induced 3-cycle $(a, b, c, a)$.
 
@@ -282,7 +286,7 @@ We illustrate the two-layer architecture with two small causets.
   \[
     \Hol(a \to b \to c \to a) = i \cdot i \cdot i = i^3 = -i.
   \]
-  Traversing in the reverse sense gives $\Hol = (-i)^{-1} = i$.  The two values are conjugate (inverses in $\Zf$).
+  Traversing in the reverse sense gives $\Hol = (-i)^{-1} = i$.  The two values form an inversion pair in $\Zf$.
 
   \emph{Frustration.}  $\Frust = d(-i, 1) = 1$.  Equivalently, $d(i, 1) = 1$: the same value regardless of traversal direction.  \textbf{Frustration is undirected}---it is a property of the cycle as an unoriented loop, not of its traversal.
 
@@ -301,7 +305,7 @@ We illustrate the two-layer architecture with two small causets.
   All charges vanish.  The graph is conservation-consistent.
 
   \medskip
-  \noindent\textbf{The structural split in action.}  Layer~1 carries directed information (the arrows, the distinction between $a \to b$ and $b \to a$).  Layer~2 carries undirected information (frustration~$= 1$, charges~$= 1$ at every node).  This concretely illustrates \cref{thm:split}: although the underlying graph is directed, the derived frustration is insensitive to orientation.
+  \noindent\textbf{The structural split in action.}  Layer~1 carries directed information (the arrows, the distinction between $a \to b$ and $b \to a$).  Layer~2 carries undirected information (frustration~$= 1$; all nodes conserved).  This concretely illustrates \cref{thm:split}: although the underlying graph is directed, the derived frustration and conservation status are insensitive to orientation.
 \end{example}
 
 \begin{remark}
@@ -528,7 +532,7 @@ Both participatory and absolute voids are compatible with the postulates.  Wheth
 The Dirac-type seed reaches frustration in fewer edges, but we have shown economy as a structural distinction, not a dynamical law.  Whether the crystallisation dynamics preferentially follows the shortest path to frustration is a question for simulation.
 
 \paragraph{Frustration as the dynamical scalar.}
-We have adopted frustration as the quantity mediating between Layer~2 constraints and Layer~1 growth.  Whether frustration is the unique scalar capable of playing this role---or whether other Layer~2 quantities (e.g.\ charge density, face count) could serve as alternative or complementary drivers---remains open.
+We have adopted frustration as the quantity mediating between Layer~2 constraints and Layer~1 growth.  Whether frustration is the unique scalar capable of playing this role---or whether other orientation-invariant quantities (e.g.\ conservation-violation density, face count) could serve as alternative or complementary drivers---remains open.
 
 \paragraph{Continuum limit.}
 Whether the frustration of faces approximates the Einstein--Hilbert action in an appropriate limit is the bridge to general relativity.
